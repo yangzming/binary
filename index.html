@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>程序员之间的聊天工具</title>
+
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js">console.log($('.page'))</script>
+</head>
+<body>
+
+<div class="container" id="container">
+    <div class="page">
+        <div class="page__bd">
+            <div class="weui-cells__title">表单</div>
+            <div class="weui-cells weui-cell-form">
+                <div class="weui-cell">
+                    <div class="weui-cell__bd">
+                        <input type="text" class="weui-input keyword" name="keyword" placeholder="请输入文本">
+                    </div>
+                </div>
+            </div>
+            <div class="weui-cells__title">输出</div>
+            <div class="weui-cells weui-cell-form">
+                <div class="weui-cell">
+                    <div class="weui-cell__bd">
+                        <textarea class="weui-textarea output" name="output" cols="30" rows="10"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="application/javascript">
+    $('.keyword').bind('input propertychange', function () {
+        var keyword = $(this).val();
+        $.post('./do.php', {keyword: keyword}, function (res) {
+            $('.output').html(res)
+        });
+    });
+</script>
+
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
+</body>
+</html>
